@@ -8,7 +8,6 @@ def find_max_profit(prices):
   current_max_price_so_far = 0
   
   for numb in range(1, len(prices)):
-
     # if at last iteration
     if numb == len(prices) - 1:
 
@@ -23,8 +22,9 @@ def find_max_profit(prices):
       # replace current_min_price_so_far
       current_min_price_so_far = prices[numb]
 
-    elif prices[numb] < prices[numb + 1]:
-      current_max_price_so_far = prices[numb + 1]
+    # elif current_max_price_so_far < prices[numb + 1]:
+    elif current_max_price_so_far < prices[numb]:
+      current_max_price_so_far = prices[numb]
 
   return current_max_price_so_far - current_min_price_so_far
 
