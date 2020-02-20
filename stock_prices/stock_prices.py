@@ -3,7 +3,30 @@
 import argparse
 
 def find_max_profit(prices):
-  pass
+  # find first smallest number looping through prices len(prices) - 1
+  current_min_price_so_far = prices[0]
+  current_max_price_so_far = 0
+  
+  for numb in range(1, len(prices)):
+    # if at last iteration
+    if numb == len(prices) - 1:
+
+      # if last numb is bigger than max, replace
+      if current_max_price_so_far < prices[numb]:
+        current_max_price_so_far = prices[numb]
+      
+      return current_max_price_so_far - current_min_price_so_far  
+
+    # if minimum is more than next numb
+    if current_min_price_so_far > prices[numb]:
+      # replace current_min_price_so_far
+      current_min_price_so_far = prices[numb]
+
+    # elif current_max_price_so_far < prices[numb + 1]:
+    elif current_max_price_so_far < prices[numb]:
+      current_max_price_so_far = prices[numb]
+
+  return current_max_price_so_far - current_min_price_so_far
 
 
 if __name__ == '__main__':
